@@ -1,0 +1,18 @@
+@startuml foodFestivalRecommmender
+enum Category{
+    VEGAN, SWEET, SPICY, BEVERAGE, CLASSIC
+}
+class Stand{
+    String name
+}
+
+Stand --o Dish
+Category -->"Uses" Dish
+class Dish{
+    String name
+    double price
+    int calories
+    Category Category
+    Stand stand
+}
+@enduml
