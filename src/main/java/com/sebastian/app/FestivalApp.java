@@ -37,5 +37,7 @@ public class FestivalApp {
                     break;
             }
         }while(dec < 4);
+
+        sc.close();
     }
 }
