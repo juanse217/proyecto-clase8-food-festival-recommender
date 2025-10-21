@@ -21,8 +21,8 @@ public class DishesMemoryImpl implements IDishesMemory {
     }
 
     @Override
-    public Dish consultDishByName(String name) throws DishNotFoundException{
-        return dishes.stream().filter(d -> d.getName().equals(name)).findFirst().orElseThrow(() -> new DishNotFoundException("The dish couldn't be found") );
+    public Dish consultDishByCategory(String category) throws DishNotFoundException{
+        return dishes.stream().filter(d -> d.getCategory().toString().equals(category)).findFirst().orElseThrow(() -> new DishNotFoundException("The dish couldn't be found") );
     }
 
     @Override
@@ -32,7 +32,7 @@ public class DishesMemoryImpl implements IDishesMemory {
 
     @Override
     public void removeDishByName(String name) throws DishNotFoundException{
-        dishes.remove(consultDishByName(name));
+        dishes.remove(dishes.stream().filter(d -> d.getName().equals(name)).findFirst().orElseThrow(() -> new DishNotFoundException("Dish Not found for deletion")));
     }
     
 }

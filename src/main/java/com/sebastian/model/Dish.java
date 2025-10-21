@@ -29,8 +29,8 @@ public class Dish {
         return calories;
     }
     
-    public Category getCategory() {
-        return category;
+    public String getCategory() {
+        return category.toString();
     }
     
     public Stand getStand() {

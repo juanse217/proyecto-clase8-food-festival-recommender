@@ -7,7 +7,7 @@ import com.sebastian.model.Dish;
 
 public interface IDishesMemory {
     void addDish(Dish d);
-    Dish consultDishByName(String name) throws DishNotFoundException;
+    Dish consultDishByCategory(String category) throws DishNotFoundException;
     List<Dish> getAllDishes();
     void removeDishByName(String name) throws DishNotFoundException;
 }
