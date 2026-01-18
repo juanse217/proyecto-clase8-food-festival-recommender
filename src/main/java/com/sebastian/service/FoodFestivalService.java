@@ -5,12 +5,27 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 import com.sebastian.model.Dish;
+import com.sebastian.repository.IDishesMemory;
 import com.sebastian.repository.memory.DishesMemoryImpl;
 
 public class FoodFestivalService {
 
-    private DishesMemoryImpl repo;
-    private List<Dish> dishes;
+    //We use the INterface for good practices. 
+    /*
+        All constructor-injected dependencies should be final unless you have a very strong reason not to.
+
+        We use final so we ensure it's immutable. We can't change the reference but we can still change the internal data. 
+     */
+    private final IDishesMemory repo;
+    private List<Dish> dishes; //Having a List is not a good Idea, Because it means the Service has state. The Services are stateless. The best we can do is create local variables using repo.getAllDishes().
+
+    /*
+    // Services should be stateless. 
+    // Storing mutable data (like a List fetched from a repository) as a field
+    // introduces state into the Service.
+    // Instead, repositories should be called inside methods
+    // and their results stored in local variables. 
+ */
 
     public FoodFestivalService(DishesMemoryImpl repo){
         this.repo = repo; 
